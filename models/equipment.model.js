@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import db from '../config/db.js'
-import EquipmentType from './equipment_type.js'
+import EquipmentType from './equipment_type.model.js'
 
 const Equipment = db.model('Equipment', {
   barcode: String,

@@ -14,9 +14,9 @@ import listEquipmentsMiddleware from '../middlewares/equipment/list-equipments.m
 import saveEquipmentMiddleware from '../middlewares/equipment/save-equipment.middleware.js'
 import getEquipmentTypesMiddleware from '../middlewares/equipment/get-equipment-types.middleware.js'
 
-import GymModel from '../models/gym.js'
-import EquipmentModel from '../models/equipment.js'
-import EquipmentType from '../models/equipment_type.js'
+import GymModel from '../models/gym.model.js'
+import EquipmentModel from '../models/equipment.model.js'
+import EquipmentType from '../models/equipment_type.model.js'
 
 export default function (app) {
   const objRepo = {
