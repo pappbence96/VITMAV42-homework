@@ -3,7 +3,7 @@
  */
 
 export default function () {
-  return function (req, res, next) {
+  return function (req, res, _next) {
     req.session.destroy(() => {
       res.redirect('/')
     })

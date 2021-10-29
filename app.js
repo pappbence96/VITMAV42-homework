@@ -26,7 +26,7 @@ app.use(requestLoggingMiddleware())
 
 useRouting(app)
 
-app.use('*', function (req, res) {
+app.use('*', function (_req, res) {
   res.locals.error = {
     code: 404,
     message: 'Path not mapped.',
