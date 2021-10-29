@@ -2,11 +2,11 @@ import express from 'express'
 import colors from 'colors'
 import session from 'express-session'
 import methodOverride from 'method-override'
-import requestLoggingMiddleware from './middlewares/_infrastructure/request-logging.middleware.js'
-import useRouting from './route/index.js'
 import MongoStore from 'connect-mongo'
-import config from './config/config.js'
-import unmappedPathMiddleware from './middlewares/_infrastructure/unmapped-path.middleware.js'
+import useRouting from './src/route/index.js'
+import config from './src/config/config.js'
+import requestLoggingMiddleware from './src/middlewares/_infrastructure/request-logging.middleware.js'
+import unmappedPathMiddleware from './src/middlewares/_infrastructure/unmapped-path.middleware.js'
 
 const app = express()
 const port = config.app.port
