@@ -2,10 +2,11 @@ import express from 'express'
 import colors from 'colors'
 import session from 'express-session'
 import methodOverride from 'method-override'
-import requestLoggingMiddleware from './middlewares/logging/request-logging.middleware.js'
+import requestLoggingMiddleware from './middlewares/_infrastructure/request-logging.middleware.js'
 import useRouting from './route/index.js'
 import MongoStore from 'connect-mongo'
 import config from './config/config.js'
+import unmappedPathMiddleware from './middlewares/_infrastructure/unmapped-path.middleware.js'
 
 const app = express()
 const port = config.app.port
@@ -26,13 +27,7 @@ app.use(requestLoggingMiddleware())
 
 useRouting(app)
 
-app.use('*', function (_req, res) {
-  res.locals.error = {
-    code: 404,
-    message: 'Path not mapped.',
-  }
-  return res.redirect('/gyms')
-})
+app.use('*', unmappedPathMiddleware())
 
 app.listen(port, () => {
   const msg = `Chadministrator listening at http://localhost:${port}`
