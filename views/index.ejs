@@ -1,0 +1,34 @@
+<%- include('_partials/header') -%> 
+
+<%- include('_partials/menu') -%>
+
+<main>
+  <div class="p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">Administrator panel</h1>
+    <p class="fs-5 text-muted">
+      Welcome to the Gigachad Fitness administrator page. Log in with the
+      admin credentials to access the administrative functions of the application
+    </p>
+  </div>
+
+  <div class="col-4 mx-auto">
+    <% if (typeof error !== 'undefined') { %>
+      <div class="alert alert-danger">
+        <%= error.message %>
+      </div>
+    <% } %>
+
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username">
+
+            <label class="mt-2" for="pass">Password</label>
+            <input type="password" class="form-control" id="pass" name="password">
+        </div>
+        <input type="submit" class="btn btn-primary mt-4" value="Login"/>
+    </form>
+  </div>
+
+</main>
+<%- include('_partials/footer') -%>

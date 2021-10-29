@@ -1,0 +1,100 @@
+<%- include('_partials/header') -%> 
+
+<%- include('_partials/menu') -%>
+
+<main>
+  <div class="row justify-content-md-center">
+    <form class="col-lg-4" method="POST">
+      <% if (typeof equipment !== 'undefined') { %>
+        <h1>Edit equipment</h1>
+      <% } else { %>
+        <h1>Create new equipment</h1>
+      <% } %>
+      
+      
+      <% if (typeof error !== 'undefined') { %>
+        <div class="alert alert-danger">
+          <%= error.message %>
+        </div>
+      <% } %>
+
+      <div class="form-group">
+        <label for="barcode">Barcode</label>
+        <input
+          type="text"
+          class="form-control"
+          name="barcode"
+          placeholder="Barcode"
+          value="<%= locals?.equipment?.barcode || '' %>" />
+      </div>
+
+      <div class="form-group">
+        <label for="manufacturer">Manufacturer</label>
+        <input
+          type="text"
+          class="form-control"
+          name="manufacturer"
+          placeholder="Manufacturer"
+          value="<%= locals?.equipment?.manufacturer || '' %>" />
+      </div>
+
+      <div class="form-group">
+        <label for="model">Model</label>
+        <input
+          type="text"
+          class="form-control"
+          name="model"
+          placeholder="Model"
+          value="<%= locals?.equipment?.model || '' %>" />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          name="description"
+          placeholder="Description"
+          value="<%= locals?.equipment?.description || '' %>" />
+      </div>
+
+      <div class="d-flex flex-row justify-content-md-between">
+        <div class="form-group">
+          <label for="type">Type</label>
+          <select 
+            class="form-select" 
+            aria-label="Default select example" 
+            name="type"
+            >
+            
+            <% types.forEach(function(type){ %>
+              <option 
+                value="<%- type %>" 
+                <% if(locals?.equipment?.type === type) { %> 
+                  selected
+                <% } %>
+                >
+                  <%- type %>
+              </option>
+            <% }); %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="count">Count</label>
+          <input
+            type="number"
+            class="form-control"
+            name="count"
+            placeholder="Count"
+            value="<%= locals?.equipment?.count || '' %>" />
+        </div>
+      </div>
+
+      <div class="d-flex flex-row mt-4">
+        <input type="submit" class="btn btn-primary" value="Submit"/>
+        <a class="btn btn-link" href="/gyms/<%- gym._id %>/equipment">Cancel</a>
+      </div>
+    </form>
+  </div>
+</main>

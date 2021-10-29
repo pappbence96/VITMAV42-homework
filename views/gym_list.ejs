@@ -1,0 +1,66 @@
+<%- include('_partials/header') -%> 
+
+<%- include('_partials/menu') -%>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<main>
+  <%- include('_partials/delete_modal') -%>
+
+  <div class="row">
+    <div class="col-12 d-flex flex-column">
+      <h2 class="mb-3">Available gym locations</h2>
+
+      <table class="table table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% gyms.forEach(function(gym, index){ %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= gym.name %></td>
+              <td><%= gym.address %></td>
+              <td style="width: 30px; white-space: nowrap">
+                <a href="/gyms/<%= gym._id %>/equipment" class="btn btn-sm btn-primary">
+                  Inventory
+                </a>
+                <a href="/gyms/<%= gym._id %>" class="btn btn-sm btn-primary">
+                  Edit
+                </a>
+                <button
+                  class="btn btn-sm btn-danger"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteModal"
+                  data-id="<%= gym._id %>"
+                  >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <a
+        href="/gyms/new"
+        class="btn btn-primary align-self-end">
+        Create new gym
+      </a>
+    </div>
+  </div>
+</main>
+
+<script type="text/javascript">
+  $('#deleteModal').on('show.bs.modal', function (e) {
+    let id = $(e.relatedTarget).data('id');
+    $('#delete-form').get(0).setAttribute('action', `/gyms/${id}?_method=DELETE`);
+});
+</script>
+
+<%- include('_partials/footer') -%>
+      
