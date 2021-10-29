@@ -10,7 +10,6 @@ export default function (objectrepository) {
   const GymModel = requireOption(objectrepository, 'GymModel')
 
   return function (req, res, next) {
-    // eslint-disable-next-line no-unused-vars
     const { gymId } = req.params
 
     GymModel.findOne({ _id: gymId }, (err, gym) => {
