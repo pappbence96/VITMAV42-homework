@@ -1,12 +1,11 @@
-/**
- * Create a new equipment or update an existing one using data provided in
- * the POST request body.
- * Redirect to '/gyms/:gymId' equipment listing.
- */
-
 import { isEmpty } from 'lodash-es'
 import requireOption from '../require-option.js'
 
+/**
+ * Creates a new equipment or update an existing one using data provided in
+ * the POST request body.
+ * Redirects to `'/gyms/:gymId'` equipment listing.
+ */
 export default function (objectrepository) {
   const EquipmentModel = requireOption(objectrepository, 'EquipmentModel')
 

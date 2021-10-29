@@ -1,10 +1,9 @@
-/**
- * Check whether the query params contain an error message.
- * Save the error message to locals.error
- */
-
 import { isNil } from 'lodash-es'
 
+/**
+ * Checks whether the query params contain an error message.
+ * Saves the error message to `res.locals.error`.
+ */
 export default function () {
   return function (req, res, next) {
     const { errorMessage, errorCode } = req.query

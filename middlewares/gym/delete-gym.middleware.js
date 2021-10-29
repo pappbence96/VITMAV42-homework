@@ -1,10 +1,9 @@
-/**
- * Delete the gym provided in res.locals.gym from the database.
- * Redirect to '/gyms'
- */
-
 import { isNil } from 'lodash-es'
 
+/**
+ * Deletes the gym provided in `res.locals.gym` from the database.
+ * Redirects to `'/gyms'`.
+ */
 export default function () {
   return function (req, res, next) {
     const { gym } = res.locals

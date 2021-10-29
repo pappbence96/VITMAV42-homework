@@ -1,6 +1,3 @@
-/**
- * Intercepts and logs each request as "<TIME> - <METHOD> <URL>"
- */
 import colors from 'colors'
 import { isNil } from 'lodash-es'
 
@@ -34,6 +31,10 @@ const logMessage = (message) => {
   console.log(`${date} - ${message}`)
 }
 
+/**
+ * Intercepts and logs each request as `"<TIME> - <METHOD> <URL>"`.
+ * Logs the result of each call as `"<Status code> - <Success | Error message>"`
+ */
 export default function () {
   return function (req, res, next) {
     const { originalUrl, method } = req

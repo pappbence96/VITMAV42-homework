@@ -1,10 +1,9 @@
-/**
- * Fetch the list of gyms from the database.
- * Store results in res.locals.gyms
- */
-
 import requireOption from '../require-option.js'
 
+/**
+ * Fetches the list of gyms from the database.
+ * Stores results in `res.locals.gyms`.
+ */
 export default function (objectrepository) {
   const GymModel = requireOption(objectrepository, 'GymModel')
 

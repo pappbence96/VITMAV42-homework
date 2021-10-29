@@ -1,11 +1,9 @@
-/**
- * Fetch the list of equipments for the gym specified
- * by the gymId parameter.
- * Save the loaded list to res.locals.equipments
- */
-
 import requireOption from '../require-option.js'
 
+/**
+ * Fetches the list of equipments for the gym specified by the `gymId` parameter.
+ * Saves the loaded list to `res.locals.equipments`.
+ */
 export default function (objectrepository) {
   const EquipmentModel = requireOption(objectrepository, 'EquipmentModel')
 

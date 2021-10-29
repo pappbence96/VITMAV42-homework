@@ -1,8 +1,7 @@
 /**
- * Check whether the user has successfully authenticated.
- * If so, forward the call, otherwise redirect to the landing page.
+ * Checks whether the user has successfully authenticated.
+ * If so, forwards the call, otherwise redirects to the landing page.
  */
-
 export default function () {
   return function (req, res, next) {
     const { authenticated } = req.session

@@ -19,13 +19,16 @@ import GymModel from '../models/gym.model.js'
 import EquipmentModel from '../models/equipment.model.js'
 import EquipmentType from '../models/equipment_type.model.js'
 
-export default function (app) {
-  const objRepo = {
-    GymModel: GymModel,
-    EquipmentModel: EquipmentModel,
-    EquipmentType: EquipmentType,
-  }
+const objRepo = {
+  GymModel: GymModel,
+  EquipmentModel: EquipmentModel,
+  EquipmentType: EquipmentType,
+}
 
+/**
+ * Configures the routing of the application
+ */
+export default function (app) {
   // Create new gym equipment
   app.get(
     '/gyms/:gymId/equipment/new',

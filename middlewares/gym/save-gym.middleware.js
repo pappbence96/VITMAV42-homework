@@ -1,11 +1,10 @@
-/**
- * Create a new gym or update an existing one using data provided in
- * the POST request body.
- * Redirect to '/gyms' listing.*/
-
 import { isEmpty } from 'lodash-es'
 import requireOption from '../require-option.js'
 
+/**
+ * Creates a new gym or updates an existing one using data provided in
+ * the POST request body. Redirects to '/gyms'.
+ * */
 export default function (objectrepository) {
   const GymModel = requireOption(objectrepository, 'GymModel')
 

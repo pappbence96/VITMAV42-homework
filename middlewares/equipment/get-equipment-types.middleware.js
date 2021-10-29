@@ -1,9 +1,8 @@
-/**
- * Save available equipment types to res.locals.types
- */
-
 import requireOption from '../require-option.js'
 
+/**
+ * Saves available equipment types to `res.locals.types`.
+ */
 export default function (objectrepository) {
   const EquipmentType = requireOption(objectrepository, 'EquipmentType')
 
