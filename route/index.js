@@ -18,6 +18,7 @@ import getEquipmentTypesMiddleware from '../middlewares/equipment/get-equipment-
 import GymModel from '../models/gym.model.js'
 import EquipmentModel from '../models/equipment.model.js'
 import EquipmentType from '../models/equipment_type.model.js'
+import redirectIfAuthenticatedMiddleware from '../middlewares/auth/redirect-if-authenticated.middleware.js'
 
 const objRepo = {
   GymModel: GymModel,
@@ -141,7 +142,11 @@ export default function (app) {
   app.use('/404', errorFromQueryMiddleware(), renderMiddleware(objRepo, '404'))
 
   // Landing page
-  app.get('/', renderMiddleware(objRepo, 'index'))
+  app.get(
+    '/',
+    redirectIfAuthenticatedMiddleware(),
+    renderMiddleware(objRepo, 'index')
+  )
 
   // Landing page
   app.post(
