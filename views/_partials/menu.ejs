@@ -16,17 +16,18 @@
       <span class="fs-4">Admin page</span>
     </a>
 
-    
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+      <% if (typeof unauthenticated === 'undefined') { %>
       <a class="me-3 py-2 text-dark text-decoration-none" href="/gyms">
-        Gyms
-      </a>
-      <a class="me-3 py-2 text-dark text-decoration-none" href="/summary.html">
-        Equipment
-      </a>
-      <a class="me-3 py-2 text-dark text-decoration-none" href="/logout">
-        Logout
-      </a>
-    </nav>
+          Gyms
+        </a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/summary.html">
+          Equipment
+        </a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/logout">
+          Logout
+        </a>
+        <% } %>
+      </nav>
   </div>
 </header>
