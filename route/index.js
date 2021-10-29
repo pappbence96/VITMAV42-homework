@@ -133,6 +133,9 @@ export default function (app) {
   // Logout
   app.get('/logout', logoutMiddleware(objRepo))
 
+  // 404
+  app.use('/404', renderMiddleware(objRepo, '404'))
+
   // Landing page
   app.get('/', renderMiddleware(objRepo, 'index'))
 

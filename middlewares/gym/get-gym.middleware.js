@@ -14,7 +14,7 @@ export default function (objectrepository) {
 
     GymModel.findOne({ _id: gymId }, (err, gym) => {
       if (err || !gym) {
-        return next(err)
+        res.redirect('/404')
       }
 
       res.locals.gym = gym

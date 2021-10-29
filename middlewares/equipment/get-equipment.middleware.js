@@ -13,7 +13,7 @@ export default function (objectrepository) {
 
     EquipmentModel.findOne({ _id: equipmentId }, (err, equipment) => {
       if (err || !equipment) {
-        return next(err)
+        res.redirect('/404')
       }
 
       res.locals.equipment = equipment
