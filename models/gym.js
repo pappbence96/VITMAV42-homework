@@ -1,8 +1,8 @@
-const db = require('../config/db')
+import db from '../config/db.js'
 
 const Gym = db.model('Gym', {
   address: String,
   name: String,
 })
 
-module.exports = Gym
+export default Gym

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 mongoose.connect('mongodb://localhost/ISHCB6')
 
-module.exports = mongoose
+export default mongoose

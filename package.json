@@ -1,4 +1,6 @@
 {
+  "name": "chadministrator",
+  "type": "module",
   "scripts": {
     "serve": "node app.js"
   },

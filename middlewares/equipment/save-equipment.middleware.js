@@ -4,10 +4,10 @@
  * Redirect to '/gyms/:gymId' equipment listing.
  */
 
-const { isEmpty } = require('lodash')
-const requireOption = require('../require-option')
+import { isEmpty } from 'lodash-es'
+import requireOption from '../require-option.js'
 
-module.exports = function (objectrepository) {
+export default function (objectrepository) {
   const EquipmentModel = requireOption(objectrepository, 'EquipmentModel')
 
   return function (req, res, next) {

@@ -3,9 +3,9 @@
  * Save the loaded equipment to res.locals.equipment
  */
 
-const requireOption = require('../require-option')
+import requireOption from '../require-option.js'
 
-module.exports = function (objectrepository) {
+export default function (objectrepository) {
   const EquipmentModel = requireOption(objectrepository, 'EquipmentModel')
 
   return function (req, res, next) {

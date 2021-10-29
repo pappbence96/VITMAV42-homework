@@ -3,9 +3,9 @@
  * Save the loaded gym to res.locals.gym
  */
 
-const requireOption = require('../require-option')
+import requireOption from '../require-option.js'
 
-module.exports = function (objectrepository) {
+export default function (objectrepository) {
   const GymModel = requireOption(objectrepository, 'GymModel')
 
   return function (req, res, next) {

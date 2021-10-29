@@ -13,4 +13,4 @@ function requireOption(objectRepository, propertyName) {
   throw new TypeError(`${propertyName} required`)
 }
 
-module.exports = requireOption
+export default requireOption

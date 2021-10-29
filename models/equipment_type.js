@@ -7,4 +7,4 @@ const EquipmentType = Object.freeze({
   Other: 'Other',
 })
 
-module.exports = EquipmentType
+export default EquipmentType

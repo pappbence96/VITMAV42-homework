@@ -3,9 +3,9 @@
  * Redirect to '/gyms/:gymId' equipment listing
  */
 
-const isNil = require('lodash').isNil
+import { isNil } from 'lodash-es'
 
-module.exports = function () {
+export default function () {
   return function (req, res, next) {
     const { gymId } = req.params
     const { equipment } = res.locals

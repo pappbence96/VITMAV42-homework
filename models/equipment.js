@@ -1,6 +1,6 @@
-const Schema = require('mongoose').Schema
-const db = require('../config/db')
-const EquipmentType = require('./equipment_type')
+import mongoose from 'mongoose'
+import db from '../config/db.js'
+import EquipmentType from './equipment_type.js'
 
 const Equipment = db.model('Equipment', {
   barcode: String,
@@ -15,9 +15,9 @@ const Equipment = db.model('Equipment', {
   },
 
   _location: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Gym',
   },
 })
 
-module.exports = Equipment
+export default Equipment

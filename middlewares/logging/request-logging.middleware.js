@@ -1,8 +1,8 @@
 /**
  * Intercepts and logs each request as "<TIME> - <METHOD> <URL>"
  */
-const colors = require('colors')
-const { isNil } = require('lodash')
+import colors from 'colors'
+import { isNil } from 'lodash-es'
 
 const colorMethod = (method) => {
   switch (method) {
@@ -34,7 +34,7 @@ const logMessage = (message) => {
   console.log(`${date} - ${message}`)
 }
 
-module.exports = function () {
+export default function () {
   return function (req, res, next) {
     const { originalUrl, method } = req
 

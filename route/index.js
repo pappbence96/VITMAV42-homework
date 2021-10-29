@@ -1,24 +1,24 @@
-const authMiddleware = require('../middlewares/auth/auth.middleware')
-const checkCredentialsMiddleware = require('../middlewares/auth/check-credentials.middleware')
-const logoutMiddleware = require('../middlewares/auth/logout.middleware')
-const renderMiddleware = require('../middlewares/render.middleware')
+import authMiddleware from '../middlewares/auth/auth.middleware.js'
+import checkCredentialsMiddleware from '../middlewares/auth/check-credentials.middleware.js'
+import logoutMiddleware from '../middlewares/auth/logout.middleware.js'
+import renderMiddleware from '../middlewares/render.middleware.js'
 
-const deleteGymMiddleware = require('../middlewares/gym/delete-gym.middleware')
-const getGymMiddleware = require('../middlewares/gym/get-gym.middleware')
-const listGymsMiddleware = require('../middlewares/gym/list-gyms.middleware')
-const saveGymMiddleware = require('../middlewares/gym/save-gym.middleware')
+import deleteGymMiddleware from '../middlewares/gym/delete-gym.middleware.js'
+import getGymMiddleware from '../middlewares/gym/get-gym.middleware.js'
+import listGymsMiddleware from '../middlewares/gym/list-gyms.middleware.js'
+import saveGymMiddleware from '../middlewares/gym/save-gym.middleware.js'
 
-const deleteEquipmentMiddleware = require('../middlewares/equipment/delete-equipment.middleware')
-const getEquipmentMiddleware = require('../middlewares/equipment/get-equipment.middleware')
-const listEquipmentsMiddleware = require('../middlewares/equipment/list-equipments.middleware')
-const saveEquipmentMiddleware = require('../middlewares/equipment/save-equipment.middleware')
-const getEquipmentTypesMiddleware = require('../middlewares/equipment/get-equipment-types.middleware')
+import deleteEquipmentMiddleware from '../middlewares/equipment/delete-equipment.middleware.js'
+import getEquipmentMiddleware from '../middlewares/equipment/get-equipment.middleware.js'
+import listEquipmentsMiddleware from '../middlewares/equipment/list-equipments.middleware.js'
+import saveEquipmentMiddleware from '../middlewares/equipment/save-equipment.middleware.js'
+import getEquipmentTypesMiddleware from '../middlewares/equipment/get-equipment-types.middleware.js'
 
-const GymModel = require('../models/gym')
-const EquipmentModel = require('../models/equipment')
-const EquipmentType = require('../models/equipment_type')
+import GymModel from '../models/gym.js'
+import EquipmentModel from '../models/equipment.js'
+import EquipmentType from '../models/equipment_type.js'
 
-module.exports = function (app) {
+export default function (app) {
   const objRepo = {
     GymModel: GymModel,
     EquipmentModel: EquipmentModel,

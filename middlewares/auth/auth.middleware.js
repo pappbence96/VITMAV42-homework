@@ -3,7 +3,7 @@
  * If so, forward the call, otherwise redirect to the landing page.
  */
 
-module.exports = function () {
+export default function () {
   return function (req, res, next) {
     const { authenticated } = req.session
 

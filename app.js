@@ -1,7 +1,9 @@
-const express = require('express')
-const colors = require('colors')
-const session = require('express-session')
-const methodOverride = require('method-override')
+import express from 'express'
+import colors from 'colors'
+import session from 'express-session'
+import methodOverride from 'method-override'
+import requestLoggingMiddleware from './middlewares/logging/request-logging.middleware.js'
+import useRouting from './route/index.js'
 
 const app = express()
 const port = 8080
@@ -10,7 +12,6 @@ app.set('view engine', 'ejs')
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-app.use(express.static('static'))
 
 app.use(
   session({
@@ -20,10 +21,9 @@ app.use(
   })
 )
 
-const requestLoggingMiddleware = require('./middlewares/logging/request-logging.middleware')
 app.use(requestLoggingMiddleware())
 
-require('./route/index')(app)
+useRouting(app)
 
 app.use('*', function (req, res) {
   res.locals.error = {
