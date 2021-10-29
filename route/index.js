@@ -134,11 +134,8 @@ export default function (app) {
   app.get('/logout', logoutMiddleware(objRepo))
 
   // Landing page
-  app.get(
-    '/',
-    checkCredentialsMiddleware(objRepo),
-    renderMiddleware(objRepo, 'index')
-  )
+  app.get('/', renderMiddleware(objRepo, 'index'))
+
   // Landing page
   app.post(
     '/',
