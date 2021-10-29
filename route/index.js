@@ -1,7 +1,8 @@
 import authMiddleware from '../middlewares/auth/auth.middleware.js'
 import checkCredentialsMiddleware from '../middlewares/auth/check-credentials.middleware.js'
 import logoutMiddleware from '../middlewares/auth/logout.middleware.js'
-import renderMiddleware from '../middlewares/render.middleware.js'
+import renderMiddleware from '../middlewares/_infrastructure/render.middleware.js'
+import errorFromQueryMiddleware from '../middlewares/_infrastructure/error-from-query.middleware.js'
 
 import deleteGymMiddleware from '../middlewares/gym/delete-gym.middleware.js'
 import getGymMiddleware from '../middlewares/gym/get-gym.middleware.js'
@@ -134,7 +135,7 @@ export default function (app) {
   app.get('/logout', logoutMiddleware(objRepo))
 
   // 404
-  app.use('/404', renderMiddleware(objRepo, '404'))
+  app.use('/404', errorFromQueryMiddleware(), renderMiddleware(objRepo, '404'))
 
   // Landing page
   app.get('/', renderMiddleware(objRepo, 'index'))

@@ -3,6 +3,7 @@
  * Save the loaded equipment to res.locals.equipment
  */
 
+import { encodeMessageTo404Query } from '../../util/encode-message-to-404-query.function.js'
 import requireOption from '../require-option.js'
 
 export default function (objectrepository) {
@@ -13,7 +14,8 @@ export default function (objectrepository) {
 
     EquipmentModel.findOne({ _id: equipmentId }, (err, equipment) => {
       if (err || !equipment) {
-        res.redirect('/404')
+        const message = 'This equipment does not exist.'
+        return res.redirect(encodeMessageTo404Query(message))
       }
 
       res.locals.equipment = equipment

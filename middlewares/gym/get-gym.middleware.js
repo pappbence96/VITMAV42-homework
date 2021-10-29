@@ -3,6 +3,7 @@
  * Save the loaded gym to res.locals.gym
  */
 
+import { encodeMessageTo404Query } from '../../util/encode-message-to-404-query.function.js'
 import requireOption from '../require-option.js'
 
 export default function (objectrepository) {
@@ -14,7 +15,8 @@ export default function (objectrepository) {
 
     GymModel.findOne({ _id: gymId }, (err, gym) => {
       if (err || !gym) {
-        res.redirect('/404')
+        const message = 'This gym does not exist.'
+        return res.redirect(encodeMessageTo404Query(message))
       }
 
       res.locals.gym = gym
