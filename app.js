@@ -4,6 +4,7 @@ import session from 'express-session'
 import methodOverride from 'method-override'
 import requestLoggingMiddleware from './middlewares/logging/request-logging.middleware.js'
 import useRouting from './route/index.js'
+import MongoStore from 'connect-mongo'
 
 const app = express()
 const port = 8080
@@ -18,6 +19,7 @@ app.use(
     secret: 'secret',
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/ISHCB6' }),
   })
 )
 
