@@ -4,6 +4,14 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+<style>
+  .empty-message {    
+    line-height: 3;
+    font-size: 1.4em;
+    letter-spacing: 0.5px;
+  }
+</style>
+
 <main>
   <%- include('_partials/delete_modal') -%>
 
@@ -51,6 +59,14 @@
               </td>
             </tr>
           <% }); %>
+
+          <% if (equipments.length === 0) { %>
+            <tr>
+              <td colspan="8" class="text-center empty-message">
+                There are no items here yet.
+              </td>
+            </tr>
+          <% } %>
         </tbody>
       </table>
 
