@@ -4,12 +4,16 @@
  * Otherwise generate an error message and pass it forward.
  */
 
+import config from '../../config/config.js'
+
+const validateCredentials = ({ username, password }) => {
+  const { admin } = config
+  return username === admin.username && password === admin.password
+}
+
 export default function () {
   return function (req, res, next) {
-    const { username, password } = req.body
-
-    // TODO: store the creds in a safe, non-public way
-    const credentialsValid = username === 'admin' && password === 'admin'
+    const credentialsValid = validateCredentials(req.body)
 
     if (credentialsValid) {
       req.session.authenticated = true

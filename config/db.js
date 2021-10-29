@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
+import config from './config.js'
 
-mongoose.connect('mongodb://localhost/ISHCB6')
+mongoose.connect(config.db.host)
 
 export default mongoose

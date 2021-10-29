@@ -5,9 +5,10 @@ import methodOverride from 'method-override'
 import requestLoggingMiddleware from './middlewares/logging/request-logging.middleware.js'
 import useRouting from './route/index.js'
 import MongoStore from 'connect-mongo'
+import config from './config/config.js'
 
 const app = express()
-const port = 8080
+const port = config.app.port
 
 app.set('view engine', 'ejs')
 app.use(methodOverride('_method'))
@@ -16,10 +17,8 @@ app.use(express.json())
 
 app.use(
   session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/ISHCB6' }),
+    ...config.session,
+    store: MongoStore.create({ mongoUrl: config.db.host }),
   })
 )
 
