@@ -1,0 +1,113 @@
+<%- include('_partials/header') -%> 
+
+<%- include('_partials/menu') -%>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<main>
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button 
+        class="nav-link active" 
+        id="pills-bar-tab" 
+        data-bs-toggle="pill" 
+        data-bs-target="#pills-bar" 
+        type="button" 
+        role="tab" 
+        aria-controls="pills-bar" 
+        aria-selected="true"
+        >
+        Barchart
+      </button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <button 
+        class="nav-link" 
+        id="pills-pie-tab" 
+        data-bs-toggle="pill" 
+        data-bs-target="#pills-pie" 
+        type="button" role="tab" 
+        aria-controls="pills-pie" 
+        aria-selected="false"
+        >
+        Piechart
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-bar" role="tabpanel" aria-labelledby="pills-bar-tab">
+      <canvas 
+        id="barchart" 
+        width="400" 
+        height="200" 
+        >
+      </canvas>
+    </div>
+
+    <div class="tab-pane fade" id="pills-pie" role="tabpanel" aria-labelledby="pills-pie-tab">
+      <canvas 
+        id="piechart" 
+        width="200" 
+        height="200" 
+        >
+      </canvas>
+    </div>
+  </div>
+  
+  <script>
+    const backgroundColor = [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(255, 159, 64, 0.2)'
+      ]
+    const borderColor = [
+      'rgba(255, 99, 132, 1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(153, 102, 255, 1)',
+      'rgba(255, 159, 64, 1)'
+    ]
+    const borderWidth = 1
+
+    const equipmentPerType = JSON.parse('<%- equipmentPerType %>')
+
+    const data = {
+      labels: equipmentPerType.map(({type}) => type),
+      datasets: [{
+        label: 'Number of items in category',
+        data: equipmentPerType.map(({count}) => count),
+        backgroundColor,
+        borderColor,
+        borderWidth
+      }]
+    }
+
+    const barCanvas = document.getElementById('barchart')
+    const barchartCtx = barCanvas.getContext('2d');
+    const barchart = new Chart(barchartCtx, {
+      type: 'bar',
+      data,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    const pieCanvas = document.getElementById('piechart')
+    const piechartCtx = pieCanvas.getContext('2d');
+    const piechart = new Chart(piechartCtx, {
+      type: 'pie',
+      data,
+    });
+    </script>
+</main>
+<%- include('_partials/footer') -%>

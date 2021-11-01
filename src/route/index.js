@@ -19,6 +19,7 @@ import GymModel from '../models/gym.model.js'
 import EquipmentModel from '../models/equipment.model.js'
 import EquipmentType from '../models/equipment_type.model.js'
 import redirectIfAuthenticatedMiddleware from '../middlewares/auth/redirect-if-authenticated.middleware.js'
+import getStatisticsMiddleware from '../middlewares/statistics/get-statistics.middleware.js'
 
 const objRepo = {
   GymModel: GymModel,
@@ -133,6 +134,14 @@ export default function (app) {
     authMiddleware(objRepo),
     listGymsMiddleware(objRepo),
     renderMiddleware(objRepo, 'gym_list')
+  )
+
+  // Equipment statistics
+  app.get(
+    '/statistics',
+    authMiddleware(objRepo),
+    getStatisticsMiddleware(objRepo),
+    renderMiddleware(objRepo, 'statistics')
   )
 
   // Logout
