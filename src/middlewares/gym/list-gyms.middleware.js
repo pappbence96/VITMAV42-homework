@@ -8,13 +8,29 @@ export default function (objectrepository) {
   const GymModel = requireOption(objectrepository, 'GymModel')
 
   return function (req, res, next) {
-    GymModel.find({}, (err, gyms) => {
-      if (err) {
+    GymModel.aggregate([
+      {
+        $lookup: {
+          from: 'equipment',
+          localField: '_id',
+          foreignField: '_location',
+          as: 'equipmentCount',
+        },
+      },
+      {
+        $addFields: {
+          equipmentCount: {
+            $size: '$equipmentCount',
+          },
+        },
+      },
+    ])
+      .then((gyms) => {
+        res.locals.gyms = gyms
+        return next()
+      })
+      .catch((err) => {
         return next(err)
-      }
-
-      res.locals.gyms = gyms
-      return next()
-    })
+      })
   }
 }
