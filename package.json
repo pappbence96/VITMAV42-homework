@@ -2,7 +2,8 @@
   "name": "chadministrator",
   "type": "module",
   "scripts": {
-    "serve": "node app.js"
+    "serve": "node app.js",
+    "test": "mocha --recursive"
   },
   "dependencies": {
     "colors": "^1.4.0",
